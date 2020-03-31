@@ -13,58 +13,75 @@
 </head>
 
 <body>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
 
-  <h1>Menu deroulant</h1>
+      <h1>Menu deroulant</h1>
 
-  <div class="btn-group">
-        <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Action
-        </button>
-        <div class="dropdown-menu"> 
-           <%for(d of data){%>
-          <a class="dropdown-item" value="<%=d.id%>"><%=d.nom%> <%=d.prenom%></a>
-          <%}%>
-     
+        <div class="container d-flex flex-column align-items-center justify-content-center">
+          <select class="form-control" id="users"style="
+          margin-top: 60px;
+          margin-bottom: 30px;">
+            <%for(d of data){%>
+            <option value="<%=d.id%>"><%=d.nom%> <%d.prenom%></option>
+            <%}%>
+          </select>
         </div>
-      </div>
 
-   <!-- Card qui affiche les info -->
+  
 
-      <div class="card" style="width: 18rem;">
+
+   
+
+      <!-- Card qui affiche les info -->
+
+      <div id="infos" class="card text-black bg-primary mb-3" style="width: 18rem;">
         <div class="card-header">
-          Id
+          <span id="id"></span>
         </div>
         <ul class="list-group list-group-flush">
-          <li class="list-group-item">nom</li>
-          <li class="list-group-item">premon</li>
-          <li class="list-group-item">profession</li>
-          <li class="list-group-item">adresse</li>
-          <li class="list-group-item">tel</li>
+          <li class="list-group-item"><span id="nom"></span> <span id="prenom"></span></li>
+          <li class="list-group-item"><span id="age"></span></li>
+          <li class="list-group-item"><span id="profession"></span></li>
+          <li class="list-group-item"><span id="adresse"></span></li>
+          <li class="list-group-item"><span id="tel"></span></li>
 
 
 
         </ul>
       </div>
 
-
+      </div>
+  </div> 
+</div>
   
 
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script>
+    $("#users").on("change",()=>{
+    $.ajax({
+        url:"/info/"+$("#users").val(),
 
+        success:(data)=>{
+    console.log(data)
+    $("#id").html(data[0].id)
+    $("#nom").html(data[0].nom)
+    $("#prenom").html(data[0].prenom)
+    $("#profession").html("Profession : "+data[0].profession)
+    $("#age").html("Age : "+data[0].age)
+    $("#adresse").html("Adresse : "+data[0].adresse)
+    $("#tel").html("Telephone : "+data[0].tel)
 
-
-
-
-
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        }
+       
+    })
+    })
     </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
-  
-  
+    
 </body>
 
 </html>

@@ -1,7 +1,12 @@
 const router = require("express").Router();
 
-let controller = require("../controllers/indexController");
+let indexController = require("../controllers/indexController");
 
-router.get('/', controller.index);
+router.get('/', indexController.index);
+router.get('/info/:id', indexController.info);
+//router.get('/qrcode/:item',indexController.qrcode);
+
+
+
 
 module.exports = router;
