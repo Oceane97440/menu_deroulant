@@ -1,0 +1,33 @@
+[
+            {
+            "id":1,    
+            "nom" : "Didier",
+            "prenom": "Stephane",
+            "age": "48",
+            "profession" : "PDG",
+            "adresse" : "324 rue paris",
+           "tel" : "345696"
+            },
+            {
+                "id":2,    
+                "nom" : "Sautron",
+                "prenom": "Coralie",
+                "age":"18" ,
+                "profession" : "Etudiante",
+                "adresse" : "15 rue lafayette",
+               "tel" : "360212"
+            },
+            {
+                "id":3,    
+                "nom" : "Payet",
+                "prenom": "Jean",
+                "age": "56",
+                "profession" : "Policier",
+                "adresse" : "667 rue galaxie",
+               "tel" : "575369"
+            }
+        
+]        
+        
+        
+        
