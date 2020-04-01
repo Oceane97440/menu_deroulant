@@ -23,10 +23,15 @@
           <select class="form-control" id="users"style="
           margin-top: 60px;
           margin-bottom: 30px;">
+
             <%for(d of data){%>
-            <option value="<%=d.id%>"><%=d.nom%> <%d.prenom%></option>
+
+              <option value="<%=d.id%>"><%=d.nom%> <%d.prenom%></option>
+
             <%}%>
+
           </select>
+
         </div>
 
   
@@ -56,31 +61,7 @@
   </div> 
 </div>
   
-
-    <script
-    src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-    crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script>
-    $("#users").on("change",()=>{
-    $.ajax({
-        url:"/info/"+$("#users").val(),
-
-        success:(data)=>{
-    console.log(data)
-    $("#id").html(data[0].id)
-    $("#nom").html(data[0].nom)
-    $("#prenom").html(data[0].prenom)
-    $("#profession").html("Profession : "+data[0].profession)
-    $("#age").html("Age : "+data[0].age)
-    $("#adresse").html("Adresse : "+data[0].adresse)
-    $("#tel").html("Telephone : "+data[0].tel)
-
-        }
-       
-    })
-    })
-    </script>
+<%- include('partials/fuctionajax.ejs') %>
     
 </body>
 
